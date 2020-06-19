@@ -24,6 +24,7 @@ public class Usuario {
 	@Size(min = 3)
 	@Column(name = "senha")
 	private String senha;
+	
 
 	public Long getId() {
 		return id;

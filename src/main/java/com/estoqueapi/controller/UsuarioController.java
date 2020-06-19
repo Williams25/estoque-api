@@ -2,9 +2,7 @@ package com.estoqueapi.controller;
 
 import java.util.List;
 import java.util.Optional;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,10 +27,21 @@ public class UsuarioController {
 
 	@Autowired
 	private UsuarioRepository usuarios;
-
+	
 	@GetMapping
 	public List<Usuario> listar() {
 		return usuarios.findAll();
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<Usuario> findIdUsuario(@PathVariable Long id) {
+		Optional<Usuario> usuarioOptional = usuarios.findById(id);
+		
+		if (usuarioOptional.toString().equals("Optional.empty")) {
+			return ResponseEntity.notFound().build();
+		}
+		
+		return ResponseEntity.ok(usuarioOptional.get());
 	}
 	
 	@GetMapping("/{usuario}/{senha}")

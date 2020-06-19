@@ -12,28 +12,28 @@ import javax.validation.constraints.Size;
 @Entity
 public class Produto {
 
-@Id
-	@GeneratedValue(strategy =  GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@Column
-	private String id_usuario;
-	
+
+	@Column(name = "id_usuario")
+	private Long usuario;
+
 	@NotEmpty
 	@Size(max = 100)
 	@Column(name = "nome_prod")
 	private String nome;
-	
+
 	@NotEmpty
 	@Size(max = 250)
 	@Column
 	private String descricao;
-	
+
 	@NotEmpty
 	@Min(0)
 	@Column
 	private String quantidade;
-	
+
 	@NotEmpty
 	@Min(0)
 	@Column
@@ -47,12 +47,12 @@ public class Produto {
 		this.id = id;
 	}
 
-	public String getId_usuario() {
-		return id_usuario;
+	public Long getId_usuario() {
+		return usuario;
 	}
 
-	public void setId_usuario(String id_usuario) {
-		this.id_usuario = id_usuario;
+	public void setId_usuario(Long usuario) {
+		this.usuario = usuario;
 	}
 
 	public String getNome() {
